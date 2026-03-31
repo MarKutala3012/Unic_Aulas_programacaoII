@@ -68,6 +68,8 @@ public class pessoa {
           System.out.println("maior de idade");
       
       }
+ else{ System.out.println("menor de idade"); }
+
 
         return idade;
   }
