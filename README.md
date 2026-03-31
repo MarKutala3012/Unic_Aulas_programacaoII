@@ -58,22 +58,28 @@ public class retangulo1 {
       public double area(){
         return this.altura*this.largura;
     }
+     public double perimero(){
+     return 2*(this.altura+this.largura);
+    }
    
 }
 /*Funcao main*/
 package retangulo;
 
-
 public class Retangulo {
 
     public static void main(String[] args) {
-       retangulo1 r0= new retangulo1();
-        retangulo1 r1 = new retangulo1(10.5,15.2,4,6);
-        r0.setAltura(15.2);
-        System.out.println("Altura"+" "+r0.getAltura());
-    }
+       retangulo1 r0 = new retangulo1(2.0,1.0,0,0);
+        retangulo1 r1 = new retangulo1(1.2,2.1,1,1);
+         
+       
+        System.out.println("coordenadas "+r1.getX()+" ,"+r1.getY());
+        System.out.println(" ");
+        System.out.println("area:"+r1.area());
+        System.out.println(" ");
+        System.out.println("Perimetro:"+r1.perimero());
     
-}
+    }
     
 
 
