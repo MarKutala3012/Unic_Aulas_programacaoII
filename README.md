@@ -55,6 +55,9 @@ public class retangulo1 {
     public void setY(int y) {
         this.y = y;
     }
+      public double area(){
+        return this.altura*this.largura;
+    }
    
 }
 /*Funcao main*/
