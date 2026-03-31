@@ -57,6 +57,20 @@ public class retangulo1 {
     }
    
 }
+/*Funcao main*/
+package retangulo;
+
+
+public class Retangulo {
+
+    public static void main(String[] args) {
+       retangulo1 r0= new retangulo1();
+        retangulo1 r1 = new retangulo1(10.5,15.2,4,6);
+        r0.setAltura(15.2);
+        System.out.println("Altura"+" "+r0.getAltura());
+    }
+    
+}
     
 
 
