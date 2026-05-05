@@ -1,0 +1,125 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package exercicios_heranc;
+
+public class Produto {
+    protected String nome;
+    protected double precoBase;
+    protected String codigo;
+    protected String cor;
+
+    // Construtor geral
+    public Produto(String nome, double precoBase, String codigo, String cor) {
+        this.nome = nome;
+        this.precoBase = precoBase;
+        this.codigo = codigo;
+        this.cor = cor;
+    }
+
+    // Construtor com valores por defeito
+    public Produto(String nome, double precoBase, String codigo) {
+        this.nome = nome;
+        this.precoBase = precoBase;
+        this.codigo = codigo;
+        this.cor = "preto";
+    }
+
+    // Construtor vazio com valores padrão
+    public Produto() {
+        this.nome = "";
+        this.precoBase = 150;
+        this.codigo = "";
+        this.cor = "preto";
+    }
+
+    // Getters e Setters
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+
+    public double getPrecoBase() { return precoBase; }
+    public void setPrecoBase(double precoBase) { this.precoBase = precoBase; }
+
+    public String getCodigo() { return codigo; }
+    public void setCodigo(String codigo) { this.codigo = codigo; }
+
+    public String getCor() { return cor; }
+    public void setCor(String cor) { this.cor = cor; }
+
+    // Método calcular preço com IVA
+    public double calcularPreco(double iva) {
+        return precoBase + (precoBase * iva);
+    }
+}
+
+    
+package exercicios_heranc;
+
+public class ProdutoPerecivel extends Produto{
+    
+    private int diasParaExpirar;
+
+    public ProdutoPerecivel(String nome, double precoBase, String codigo, String cor, int diasParaExpirar) {
+        super(nome, precoBase, codigo, cor);
+        this.diasParaExpirar = diasParaExpirar;
+    }
+
+    public ProdutoPerecivel(String nome, double precoBase, String codigo, int diasParaExpirar) {
+        super(nome, precoBase, codigo);
+        this.diasParaExpirar = diasParaExpirar;
+    }
+
+    public int getDiasParaExpirar() {
+        return diasParaExpirar;
+    }
+
+    public void setDiasParaExpirar(int diasParaExpirar) {
+        this.diasParaExpirar = diasParaExpirar;
+    }
+
+    @Override
+    public double calcularPreco(double iva) {
+        double preco = super.calcularPreco(iva);
+
+        if (diasParaExpirar == 1) {
+            preco /= 4;
+        } else if (diasParaExpirar == 2) {
+            preco /= 3;
+        } else if (diasParaExpirar == 3) {
+            preco /= 2;
+        }
+
+        return preco;
+    }
+}
+    
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package exercicios_heranc;
+public class Exercicios_heranc {
+    public static void main(String[] args) {
+        Produto produtoNormal = new Produto("Televisao", 200, "TV001");
+        ProdutoPerecivel produtoPerecivel = new ProdutoPerecivel("Leite", 100, "LT001", 1);
+
+        double iva = 0.14; // 14% IVA
+
+        double precoNormal = produtoNormal.calcularPreco(iva);
+        double precoPerecivel = produtoPerecivel.calcularPreco(iva);
+
+        System.out.println("Produto: " + produtoNormal.getNome() +
+                " | Preco final: " + precoNormal);
+
+        System.out.println("Produto Perecivel: " + produtoPerecivel.getNome() +
+                " | Preco final: " + precoPerecivel);
+    }
+}
+       
+    
+
+
+
+
